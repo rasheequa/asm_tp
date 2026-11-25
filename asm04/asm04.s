@@ -12,13 +12,18 @@ _start:
     mov rdx, 32
     syscall
 
+    cmp rax, 0
+    jle .not_number
+
     cmp byte [number+rax-1], 10
     jne .suite
     dec rax
 
     .suite :
+    cmp rax, 0
+    jle .not_number
+    
     mov rcx, 0
-
     cmp byte [number], '-'
     jne .boucle
     
